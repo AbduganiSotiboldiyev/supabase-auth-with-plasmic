@@ -725,6 +725,21 @@
           "id": "WAKdUsr7tyc2",
           "name": "SearchsvgIcon",
           "moduleFilePath": "plasmic/supabase_auth_test/icons/PlasmicIcon__Searchsvg.tsx"
+        },
+        {
+          "id": "Y6kPrpCSq-HO",
+          "name": "Pulse1X10S200Px200PxsvgIcon",
+          "moduleFilePath": "plasmic/supabase_auth_test/icons/PlasmicIcon__Pulse1X10S200Px200Pxsvg.tsx"
+        },
+        {
+          "id": "VzZ53or0B4oa",
+          "name": "Pulse1X10S200Px200Pxsvg2Icon",
+          "moduleFilePath": "plasmic/supabase_auth_test/icons/PlasmicIcon__Pulse1X10S200Px200Pxsvg2.tsx"
+        },
+        {
+          "id": "GllyI74HQIOv",
+          "name": "Rolling1X10S200Px200PxsvgIcon",
+          "moduleFilePath": "plasmic/supabase_auth_test/icons/PlasmicIcon__Rolling1X10S200Px200Pxsvg.tsx"
         }
       ],
       "images": [

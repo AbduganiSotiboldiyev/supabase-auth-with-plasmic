@@ -71,36 +71,51 @@ import sty from "./PlasmicAuthComponent.module.css"; // plasmic-import: RC60h7i_
 
 import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: WAKdUsr7tyc2/icon
 import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: GmKc9DYZzt5C/icon
+import Rolling1X10S200Px200PxsvgIcon from "./icons/PlasmicIcon__Rolling1X10S200Px200Pxsvg"; // plasmic-import: GllyI74HQIOv/icon
 import Icon38Icon from "./icons/PlasmicIcon__Icon38"; // plasmic-import: hmJ0RNPopsqi/icon
 
 createPlasmicElementProxy;
 
 export type PlasmicAuthComponent__VariantMembers = {
   isSignUpFlow: "isSignUpFlow";
+  isError: "isError";
+  isLoading: "isLoading";
 };
 export type PlasmicAuthComponent__VariantsArgs = {
   isSignUpFlow?: SingleBooleanChoiceArg<"isSignUpFlow">;
+  isError?: SingleBooleanChoiceArg<"isError">;
+  isLoading?: SingleBooleanChoiceArg<"isLoading">;
 };
 type VariantPropType = keyof PlasmicAuthComponent__VariantsArgs;
 export const PlasmicAuthComponent__VariantProps = new Array<VariantPropType>(
-  "isSignUpFlow"
+  "isSignUpFlow",
+  "isError",
+  "isLoading"
 );
 
-export type PlasmicAuthComponent__ArgsType = {};
+export type PlasmicAuthComponent__ArgsType = {
+  errorMessage?: React.ReactNode;
+};
 type ArgPropType = keyof PlasmicAuthComponent__ArgsType;
-export const PlasmicAuthComponent__ArgProps = new Array<ArgPropType>();
+export const PlasmicAuthComponent__ArgProps = new Array<ArgPropType>(
+  "errorMessage"
+);
 
 export type PlasmicAuthComponent__OverridesType = {
   root?: Flex__<"div">;
   emailInput?: Flex__<typeof TextInput>;
   passwordInput?: Flex__<typeof TextInput>;
+  svg?: Flex__<"svg">;
   submitButton?: Flex__<typeof Button>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   button?: Flex__<typeof Button>;
 };
 
 export interface DefaultAuthComponentProps {
+  errorMessage?: React.ReactNode;
   isSignUpFlow?: SingleBooleanChoiceArg<"isSignUpFlow">;
+  isError?: SingleBooleanChoiceArg<"isError">;
+  isLoading?: SingleBooleanChoiceArg<"isLoading">;
   className?: string;
 }
 
@@ -154,6 +169,18 @@ function PlasmicAuthComponent__RenderFunc(props: {
         type: "private",
         variableType: "variant",
         initFunc: ({ $props, $state, $queries, $ctx }) => $props.isSignUpFlow
+      },
+      {
+        path: "isError",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isError
+      },
+      {
+        path: "isLoading",
+        type: "private",
+        variableType: "variant",
+        initFunc: ({ $props, $state, $queries, $ctx }) => $props.isLoading
       }
     ],
     [$props, $ctx, $refs]
@@ -181,6 +208,8 @@ function PlasmicAuthComponent__RenderFunc(props: {
         plasmic_plasmic_rich_components_css.plasmic_tokens,
         sty.root,
         {
+          [sty.rootisError]: hasVariant($state, "isError", "isError"),
+          [sty.rootisLoading]: hasVariant($state, "isLoading", "isLoading"),
           [sty.rootisSignUpFlow]: hasVariant(
             $state,
             "isSignUpFlow",
@@ -192,16 +221,72 @@ function PlasmicAuthComponent__RenderFunc(props: {
       <Stack__
         as={"div"}
         hasGap={true}
-        className={classNames(projectcss.all, sty.freeBox__yyRxn)}
+        className={classNames(projectcss.all, sty.freeBox__yyRxn, {
+          [sty.freeBoxisError__yyRxNneT3K]: hasVariant(
+            $state,
+            "isError",
+            "isError"
+          ),
+          [sty.freeBoxisLoading__yyRxnPbZiJ]: hasVariant(
+            $state,
+            "isLoading",
+            "isLoading"
+          )
+        })}
       >
         <div
           className={classNames(
             projectcss.all,
             projectcss.__wab_text,
-            sty.text___2LGlb
+            sty.text___2LGlb,
+            {
+              [sty.textisError___2LGlbneT3K]: hasVariant(
+                $state,
+                "isError",
+                "isError"
+              ),
+              [sty.textisSignUpFlow___2LGlbpYNem]: hasVariant(
+                $state,
+                "isSignUpFlow",
+                "isSignUpFlow"
+              )
+            }
           )}
         >
-          {"Login"}
+          {hasVariant($state, "isSignUpFlow", "isSignUpFlow")
+            ? "Sign Up"
+            : "Login"}
+        </div>
+        <div
+          className={classNames(projectcss.all, sty.freeBox___1EdQ, {
+            [sty.freeBoxisError___1EdQneT3K]: hasVariant(
+              $state,
+              "isError",
+              "isError"
+            )
+          })}
+        >
+          <div
+            className={classNames(projectcss.all, sty.freeBox___3L4Ql, {
+              [sty.freeBoxisError___3L4QLneT3K]: hasVariant(
+                $state,
+                "isError",
+                "isError"
+              )
+            })}
+          >
+            {renderPlasmicSlot({
+              defaultContents: "Error message",
+              value: args.errorMessage,
+              className: classNames(sty.slotTargetErrorMessage, {
+                [sty.slotTargetErrorMessageisError]: hasVariant(
+                  $state,
+                  "isError",
+                  "isError"
+                )
+              })
+            })}
+          </div>
         </div>
         <TextInput
           data-plasmic-name={"emailInput"}
@@ -233,21 +318,37 @@ function PlasmicAuthComponent__RenderFunc(props: {
           }
         />
 
-        <Button
-          data-plasmic-name={"submitButton"}
-          data-plasmic-override={overrides.submitButton}
-          className={classNames("__wab_instance", sty.submitButton, {
-            [sty.submitButtonisSignUpFlow]: hasVariant(
-              $state,
-              "isSignUpFlow",
-              "isSignUpFlow"
-            )
+        <Rolling1X10S200Px200PxsvgIcon
+          data-plasmic-name={"svg"}
+          data-plasmic-override={overrides.svg}
+          className={classNames(projectcss.all, sty.svg, {
+            [sty.svgisLoading]: hasVariant($state, "isLoading", "isLoading")
           })}
-        >
-          {hasVariant($state, "isSignUpFlow", "isSignUpFlow")
-            ? "Sign Up"
-            : "Login"}
-        </Button>
+          role={"img"}
+        />
+
+        {(hasVariant($state, "isLoading", "isLoading") ? false : true) ? (
+          <Button
+            data-plasmic-name={"submitButton"}
+            data-plasmic-override={overrides.submitButton}
+            className={classNames("__wab_instance", sty.submitButton, {
+              [sty.submitButtonisLoading]: hasVariant(
+                $state,
+                "isLoading",
+                "isLoading"
+              ),
+              [sty.submitButtonisSignUpFlow]: hasVariant(
+                $state,
+                "isSignUpFlow",
+                "isSignUpFlow"
+              )
+            })}
+          >
+            {hasVariant($state, "isSignUpFlow", "isSignUpFlow")
+              ? "Sign Up"
+              : "Login"}
+          </Button>
+        ) : null}
         <div className={classNames(projectcss.all, sty.freeBox__dk6Le)}>
           <div
             className={classNames(
@@ -313,12 +414,14 @@ const PlasmicDescendants = {
     "root",
     "emailInput",
     "passwordInput",
+    "svg",
     "submitButton",
     "link",
     "button"
   ],
   emailInput: ["emailInput"],
   passwordInput: ["passwordInput"],
+  svg: ["svg"],
   submitButton: ["submitButton"],
   link: ["link", "button"],
   button: ["button"]
@@ -330,6 +433,7 @@ type NodeDefaultElementType = {
   root: "div";
   emailInput: typeof TextInput;
   passwordInput: typeof TextInput;
+  svg: "svg";
   submitButton: typeof Button;
   link: "a";
   button: typeof Button;
@@ -397,6 +501,7 @@ export const PlasmicAuthComponent = Object.assign(
     // Helper components rendering sub-elements
     emailInput: makeNodeComponent("emailInput"),
     passwordInput: makeNodeComponent("passwordInput"),
+    svg: makeNodeComponent("svg"),
     submitButton: makeNodeComponent("submitButton"),
     link: makeNodeComponent("link"),
     button: makeNodeComponent("button"),

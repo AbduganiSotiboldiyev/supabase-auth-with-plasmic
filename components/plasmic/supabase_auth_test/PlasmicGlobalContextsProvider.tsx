@@ -7,24 +7,18 @@
 import * as React from "react";
 import { hasVariant, ensureGlobalVariants } from "@plasmicapp/react-web";
 import { AntdConfigProvider } from "@plasmicpkgs/antd5/skinny/registerConfigProvider";
-import { CommerceProviderComponent } from "@plasmicpkgs/commerce-shopify";
 
 export interface GlobalContextsProviderProps {
   children?: React.ReactElement;
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
-  commerceProviderComponentProps?: Partial<
-    Omit<React.ComponentProps<typeof CommerceProviderComponent>, "children">
-  >;
 }
 
 export default function GlobalContextsProvider(
   props: GlobalContextsProviderProps
 ) {
-  const { children, antdConfigProviderProps, commerceProviderComponentProps } =
-    props;
+  const { children, antdConfigProviderProps } = props;
 
   return (
     <AntdConfigProvider
@@ -119,23 +113,7 @@ export default function GlobalContextsProvider(
           : false
       }
     >
-      <CommerceProviderComponent
-        {...commerceProviderComponentProps}
-        accessToken={
-          commerceProviderComponentProps &&
-          "accessToken" in commerceProviderComponentProps
-            ? commerceProviderComponentProps.accessToken!
-            : "ef7d41c7bf7e1c214074d0d3047bcd7b"
-        }
-        storeDomain={
-          commerceProviderComponentProps &&
-          "storeDomain" in commerceProviderComponentProps
-            ? commerceProviderComponentProps.storeDomain!
-            : "next-js-store.myshopify.com"
-        }
-      >
-        {children}
-      </CommerceProviderComponent>
+      {children}
     </AntdConfigProvider>
   );
 }

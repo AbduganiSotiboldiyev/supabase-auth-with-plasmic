@@ -28,6 +28,9 @@ function AuthComponent_(
     <PlasmicAuthComponent
      root={{ ref }} 
      {...props} 
+     isError = {!!authError}
+     errorMessage = {authError?.message}
+     isLoading = {loading}
      emailInput={{
         onChange: (e) => setEmail(e.target.value),
       }}
@@ -48,8 +51,8 @@ function AuthComponent_(
               authFunction = supabase.auth.signIn({email, password})
             }
 
-            const { error } =  authFunction
-
+            const { error } = await  authFunction
+            
             if (error) {
               setAuthError(error)
               setLoading(false);
@@ -57,8 +60,8 @@ function AuthComponent_(
             }
 
             router.replace("/");
-          } catch (err) {
-            setAuthError(err)
+          } catch (error) {
+            setAuthError(error)
           } finally {
             setLoading(false);
           }

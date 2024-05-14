@@ -45,6 +45,34 @@
   font-weight: 700;
   min-width: 0;
 }
+.freeBox___1EdQ {
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  display: none;
+  padding: 8px;
+}
+.freeBoxisError___1EdQneT3K {
+  display: flex;
+}
+.freeBox___3L4Ql {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.slotTargetErrorMessage {
+  color: var(--token-j-ZwOKbpUCqd);
+  font-weight: 600;
+}
 .emailInput:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
@@ -76,6 +104,19 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+.svg {
+  position: relative;
+  object-fit: cover;
+  max-width: 100%;
+  width: 64px;
+  height: 48px;
+  color: #131614;
+  flex-shrink: 0;
+  display: none;
+}
+.svgisLoading {
+  display: block;
 }
 .submitButton:global(.__wab_instance) {
   max-width: 100%;
