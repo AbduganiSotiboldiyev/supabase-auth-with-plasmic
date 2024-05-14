@@ -87,6 +87,7 @@ export const PlasmicHomepage__ArgProps = new Array<ArgPropType>();
 export type PlasmicHomepage__OverridesType = {
   root?: Flex__<"div">;
   img?: Flex__<typeof PlasmicImg__>;
+  logoutButton?: Flex__<typeof Button>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   h1?: Flex__<"h1">;
 };
@@ -294,7 +295,9 @@ function PlasmicHomepage__RenderFunc(props: {
                   </div>
                 </Button>
                 <Button
-                  className={classNames("__wab_instance", sty.button__xseb)}
+                  data-plasmic-name={"logoutButton"}
+                  data-plasmic-override={overrides.logoutButton}
+                  className={classNames("__wab_instance", sty.logoutButton)}
                   endIcon={
                     <Icon38Icon
                       className={classNames(projectcss.all, sty.svg__mRPn)}
@@ -316,7 +319,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.text__ucRd
                     )}
                   >
-                    {"Log in"}
+                    {"Log Out"}
                   </div>
                 </Button>
                 <PlasmicLink__
@@ -416,8 +419,9 @@ function PlasmicHomepage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "img", "link", "h1"],
+  root: ["root", "img", "logoutButton", "link", "h1"],
   img: ["img"],
+  logoutButton: ["logoutButton"],
   link: ["link"],
   h1: ["h1"]
 } as const;
@@ -427,6 +431,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   img: typeof PlasmicImg__;
+  logoutButton: typeof Button;
   link: "a";
   h1: "h1";
 };
@@ -492,6 +497,7 @@ export const PlasmicHomepage = Object.assign(
   {
     // Helper components rendering sub-elements
     img: makeNodeComponent("img"),
+    logoutButton: makeNodeComponent("logoutButton"),
     link: makeNodeComponent("link"),
     h1: makeNodeComponent("h1"),
 

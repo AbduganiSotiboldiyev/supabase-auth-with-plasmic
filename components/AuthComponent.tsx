@@ -48,7 +48,7 @@ function AuthComponent_(
               authFunction = supabase.auth.signUp({email, password})
             }
             else {
-              authFunction = supabase.auth.signIn({email, password})
+              authFunction = supabase.auth.signInWithPassword({email, password})
             }
 
             const { error } = await  authFunction

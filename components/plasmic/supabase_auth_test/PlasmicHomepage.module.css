@@ -291,7 +291,7 @@
   width: auto;
   height: 1em;
 }
-.button__xseb:global(.__wab_instance) {
+.logoutButton:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
   align-self: flex-start;
@@ -307,7 +307,7 @@
   font-size: 16px;
   font-weight: 500;
   font-style: normal;
-  color: #1b1b18;
+  color: var(--token-jgohepLVeKvh);
   text-align: left;
   text-transform: none;
   line-height: 1.5;
